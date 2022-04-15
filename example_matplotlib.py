@@ -7,7 +7,6 @@ import sys
 import numpy
 from threading import Thread
 
-
 def update_line():
 
     pos = hedge.position()
@@ -15,7 +14,8 @@ def update_line():
     new_py = pos[2]
     new_w = pos[4]/10/180*pi
     new_r = 3.
- 
+    
+    #figure(1)
     plt.figure(1)
 
     axes1 = plt.gcf().get_axes()
@@ -57,8 +57,7 @@ def printThread():
         except KeyboardInterrupt:
             hedge.stop()  # stop and close serial port
             sys.exit()
-
-
+            
 def main():
     
     global fig
@@ -76,8 +75,7 @@ def main():
     axes.set_ylim([-5,10])
     axes.set_xlabel('X-Achse',fontsize=10)
     axes.set_ylabel('Y-Achse',fontsize=10)
-
-    
+ 
     fig = plt.figure(2)
     plt.title('Winkel X-Y')
     cx = fig.add_subplot(111,projection='polar')
@@ -86,7 +84,6 @@ def main():
     dx = fig.add_subplot(111,projection='polar')
 
     dx.plot([],[], 'bo',ls='-')
-
 
     axes = plt.gca()
     axes.set_rmax(4)
